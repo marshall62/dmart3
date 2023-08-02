@@ -14,7 +14,6 @@ function GroupArtworks () {
       setArtworks(categoryWorks);
     }
     if (global.artworks) {
-      console.log("Getting category artworks", group)
       getArtworks_internal();
     }
   },[global,group]); 

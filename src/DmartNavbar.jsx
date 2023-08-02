@@ -20,8 +20,7 @@ export default function DmartNavbar () {
   // to search?term=xxx which doesn't give allow me to empty the field in a callback
   // handler like onSubmit.
   // Its a small problem because the input text field has an X that allows clearing quickly
-  const handleSubmit = (e) => {
-    console.log("hi")
+  const handleSubmit = () => {
     setTerm('');
   }
 

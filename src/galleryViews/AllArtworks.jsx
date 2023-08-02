@@ -9,11 +9,9 @@ function AllArtworks () {
   useEffect(() => {
     async function getArtworks_internal () {
       const allWorks = await global.artworks.find({});
-      console.log("Number of works", await allWorks.length)
       setArtworks(allWorks);
     }
     if (global.artworks) {
-      console.log("Getting recent artworks", global)
       getArtworks_internal();
     }
   },[global]); 

@@ -21,7 +21,6 @@ export default function SearchArtworks () {
           {media: {$regex: searchTerm, $options: 'i'}}, 
           {_id: id},
           {year: num}] });
-      console.log("matching works",matchingWorks);
       if (!ignore) {
         setArtworks(matchingWorks);
       }
@@ -34,34 +33,6 @@ export default function SearchArtworks () {
     };
   }, [global.artworks, searchParams])
   
-  // useEffect(() => {
-  //   let ignore = false;
-
-  //   console.log("in useeffect with searchParams:", searchParams);
-  //   let searchTerm = searchParams.get("term");
-  //   console.log("in useeffect with searchTerm:", searchTerm);
-  //   async function getArtworks_internal () {
-  //     const [num, id] = convertToNumberAndId(searchTerm);
-  //     const matchingWorks = await global.artworks
-  //       .find({ $or: [{tags: {$regex: searchTerm, $options: 'i'}}, 
-  //         {title: {$regex: searchTerm, $options: 'i'}}, 
-  //         {media: {$regex: searchTerm, $options: 'i'}}, 
-  //         {_id: id},
-  //         {year: num}] });
-  //     console.log("matching works",matchingWorks);
-  //     if (!ignore) {
-  //       setArtworks(matchingWorks);
-  //     }
-  //   }
-  //   if (global.artworks) {
-  //     console.log("Getting artworks with", searchParams)
-  //     // getArtworks_internal();
-  //   }
-  //   return () => {
-  //     ignore = true;
-  //   };
-  // },[global, searchParams]);  
-
   if (artworks.length > 0) 
     return (
       <MyLightbox artworks={artworks}/> 

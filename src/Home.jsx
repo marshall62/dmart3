@@ -8,12 +8,10 @@ function Home () {
 
   useEffect(() => {
     async function getArtwork () {
-      console.log("Global context is ", global);
       const aw = await global.artworks.findOne({tags: "home"});
       setArtwork(aw);
     }
     if (global.artworks) {
-      console.log("Getting home artwork", global)
       getArtwork();
     }
   }, [global]);

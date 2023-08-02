@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import ImageGallery from 'react-image-gallery';
 import { useContext, useState, useEffect } from "react";
@@ -30,8 +31,6 @@ export default function MyLightbox ({artworks}) {
 
   useEffect(() => {
     const id = searchParams.get('artwork');
-    console.log("search params chg", searchParams);
-    console.log("id", id);
     setArtworkId(id);
   },[searchParams] )
 
@@ -40,7 +39,6 @@ export default function MyLightbox ({artworks}) {
   // search lookup.  So if someone sends me a link of an artwork they like, I can grab the 
   // id from the url and put it in the search box to find the artwork.   
   const handleSlideChange = (index) => {
-    console.log("sliding to",artworks[index]._id.toString());
     navigate('?artwork=' + artworks[index]._id.toString() + '&index=' + index)
   }
 

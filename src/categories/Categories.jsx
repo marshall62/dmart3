@@ -10,18 +10,15 @@ export function Categories () {
 
   useEffect(() => {
     async function getArtwork () {
-      console.log("Global context is ", global);
       const works = await global.artworks.find({tags: "exemplar"});
       setArtworks(works);
     }
     if (global.artworks) {
-      console.log("Getting home artwork", global)
       getArtwork();
     }
   }, [global]);
 
   const handleClick = (href) => {
-    console.log("click",href);
     navigate("/"+href);
   }
 
