@@ -25,7 +25,7 @@ function App() {
         realmApp = new Realm.App({id,});
         await realmApp.logIn(credentials);
         mongoDb = realmApp.currentUser.mongoClient("mongodb-atlas");
-        const aws = await mongoDb.db("artworks").collection("works");
+        const aws = await mongoDb.db("artworks").collection("artwork");
         setArtworks(aws);
         const c = await mongoDb.db("artworks").collection("config").findOne({});
         setArtistConfig(c);
