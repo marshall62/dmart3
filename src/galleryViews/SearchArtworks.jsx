@@ -16,7 +16,7 @@ export default function SearchArtworks () {
     async function getArtworks_internal () {
       const [num, id] = convertToNumberAndId(searchTerm);
       const matchingWorks = await global.artworks
-        .find({ $or: [{tags: {$regex: searchTerm, $options: 'i'}}, 
+        .find({ isActive: true, $or: [{tags: {$regex: searchTerm, $options: 'i'}}, 
           {title: {$regex: searchTerm, $options: 'i'}}, 
           {media: {$regex: searchTerm, $options: 'i'}}, 
           {_id: id},

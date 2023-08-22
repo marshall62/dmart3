@@ -8,7 +8,7 @@ function RecentArtworks () {
   
   useEffect(() => {
     async function getArtworks_internal () {
-      const allWorks = await global.artworks.find({});
+      const allWorks = await global.artworks.find({isActive: true});
       const recentWorks = allWorks.filter(aw => aw.year > 2020)
     
       setArtworks(recentWorks);

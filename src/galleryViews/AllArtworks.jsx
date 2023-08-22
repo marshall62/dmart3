@@ -8,7 +8,7 @@ function AllArtworks () {
   
   useEffect(() => {
     async function getArtworks_internal () {
-      const allWorks = await global.artworks.find({});
+      const allWorks = await global.artworks.find({isActive: true});
       setArtworks(allWorks);
     }
     if (global.artworks) {
