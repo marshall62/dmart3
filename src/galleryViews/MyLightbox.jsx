@@ -12,10 +12,19 @@ export default function MyLightbox ({artworks}) {
   const [searchParams, ] = useSearchParams();
   const global = useContext(GlobalContext);
 
+  // TODO:  Currently the state var artworkIndex is off because
+  // I want to use it to initialize the ImageGallery to load up the
+  // at the artworkIndex instead of the default of 0.  This supports doing something
+  // like reloading a page or coming to the app with a full URL including an index. The startIndex attribute
+  // of ImageGallery doesn't do this as I expect.  I'd instead have to 
+  // call the slideToIndex method which requires using refs according to the doc at
+  // https://www.npmjs.com/package/react-image-gallery
 
-  const [, setArtworkId] = useState(searchParams ? 
-    searchParams.get('artwork')
-    : '');
+  // const [, setArtworkId] = useState(searchParams ? 
+  //   searchParams.get('artwork')
+  //   : '');
+  // const [artworkIndex, setArtworkIndex] = useState(searchParams.get('index') 
+  //   || 0);
 
   const images = global.artistConfig ? 
     artworks.map(aw => {
@@ -30,8 +39,10 @@ export default function MyLightbox ({artworks}) {
 
 
   useEffect(() => {
-    const id = searchParams.get('artwork');
-    setArtworkId(id);
+    // const id = searchParams.get('artwork');
+    // setArtworkIndex(searchParams.get('index'));
+    // console.log('artworkIndex:',searchParams.get('index'))
+    // setArtworkId(id);
   },[searchParams] )
 
   // When the large image changes (a slide) update the URL in the location box to have 

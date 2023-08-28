@@ -19,7 +19,7 @@ function GroupArtworks () {
   },[global,group]); 
 
   return (
-    <div><MyLightbox artworks={artworks}/> <span>{artworks.length}</span></div>
+    <div><MyLightbox artworks={artworks}/></div>
     
   )
     
