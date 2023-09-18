@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 
 import ImageGallery from 'react-image-gallery';
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../App";
 import "react-image-gallery/styles/css/image-gallery.css";
 import './my-lightbox.css';
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { rawImageURL } from '../utils/urls';
 
 export default function MyLightbox ({artworks}) {
   const navigate = useNavigate();
@@ -29,9 +30,9 @@ export default function MyLightbox ({artworks}) {
   const images = global.artistConfig ? 
     artworks.map(aw => {
     return {
-      original: `${global.artistConfig.imageRootURI}/midsize/${aw.imagePath}`,
-      fullscreen: `${global.artistConfig.imageRootURI}/${aw.imagePath}`,
-      thumbnail: `${global.artistConfig.imageRootURI}/thumb/${aw.imagePath}`,
+      original: rawImageURL(global.artistConfig,aw,'midsize'),
+      fullscreen: rawImageURL(global.artistConfig,aw),
+      thumbnail: rawImageURL(global.artistConfig,aw,'thumb' ),
       description: `${aw.title}, ${aw.width} X ${aw.height}, ${aw.year}, ${aw.media}`
     }
     }) :

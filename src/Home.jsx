@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "./App";
+import { rawImageURL } from "./utils/urls";
 
 function Home () {
 
@@ -17,8 +18,10 @@ function Home () {
   }, [global]);
 
   let url = (global.artistConfig && global.artworks) ? 
-  `${global.artistConfig.imageRootURI}/midsize/${artwork.imagePath}`
-  : "";
+    rawImageURL(global.artistConfig, artwork,'midsize') : 
+  "";
+  // `${global.artistConfig.imageRootURI}/midsize/${artwork.imagePath}?raw=true`
+  // : "";
 
   return (
     <>

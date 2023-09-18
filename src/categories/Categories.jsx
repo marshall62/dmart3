@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../App";
 import styles from './Categories.module.css';
 import { useNavigate } from "react-router-dom";
+import { rawImageURL } from "../utils/urls";
 
 export function Categories () {
   const global = useContext(GlobalContext);
@@ -26,9 +27,8 @@ export function Categories () {
   return(
     <div className={styles.wrapper}>
   {artworks.map((aw, i) => {
-    let url = (global.artistConfig && global.artworks) ? 
-    `${global.artistConfig.imageRootURI}/midsize/${aw.imagePath}`
-    : "";
+    let url = (global.artistConfig && global.artworks) ? rawImageURL(global.artistConfig, aw,'midsize')
+      : "";
     let categoryHref = `group/${aw.categoryName.toLocaleLowerCase()}`;
       return (<div key={i} className={styles.photo}>
       <img alt="an artwork" src={url} onClick={() => handleClick(categoryHref)}/>
