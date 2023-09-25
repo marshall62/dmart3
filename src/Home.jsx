@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "./App";
 import { rawImageURL } from "./utils/urls";
+import styles from './Home.module.css';
 
 function Home () {
 
@@ -25,7 +26,7 @@ function Home () {
 
   return (
     <div>
-      <img alt="home" src={url}/>
+      <img alt="home" className="{styles.homeImage}" src={url}/>
       <p>
         {artwork.title}, {artwork.media}, {artwork.width} x {artwork.height}, {artwork.year}
       </p>

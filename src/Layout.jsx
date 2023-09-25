@@ -6,7 +6,9 @@ export function Layout () {
   return(
     <div className="container">
       <DmartNavbar className="navbar"/>
-      <Outlet className="content"/>
+      <div className="content">
+        <Outlet />
+      </div>
     </div>
   )
 }
