@@ -30,11 +30,12 @@ export function Categories () {
     let url = (global.artistConfig && global.artworks) ? rawImageURL(global.artistConfig, aw,'midsize')
       : "";
     let categoryHref = `group/${aw.categoryName.toLocaleLowerCase()}`;
-      return (<div key={i} className={styles.photo}>
+      return (<div key={i} className={styles.gridItem}>
       <img alt="an artwork" src={url} onClick={() => handleClick(categoryHref)}/>
-      <p>
-        <a className={styles.exemplarText} href={categoryHref}>{aw.categoryName.toLocaleLowerCase()}
-      </a></p>
+      <div className={styles.caption}>
+        <a href={categoryHref}>{aw.categoryName.toLocaleLowerCase()}</a>
+      </div>
+      
       </div>);
   })}
 </div>

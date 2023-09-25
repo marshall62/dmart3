@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import DmartNavbar from './DmartNavbar';
+import './Layout.css';
 
 export function Layout () {
   return(
-    <>
-      <DmartNavbar/>
-      <Outlet/>
-    </>
+    <div className="container">
+      <DmartNavbar className="navbar"/>
+      <Outlet className="content"/>
+    </div>
   )
 }

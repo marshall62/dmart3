@@ -24,12 +24,12 @@ function Home () {
   // : "";
 
   return (
-    <>
+    <div>
       <img alt="home" src={url}/>
       <p>
         {artwork.title}, {artwork.media}, {artwork.width} x {artwork.height}, {artwork.year}
       </p>
-    </>
+    </div>
   );
 
 }

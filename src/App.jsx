@@ -43,8 +43,7 @@ function App() {
   return (
     <div className="App">
       <GlobalContext.Provider value={{artworks, artistConfig}} >
-        <StrictMode><AppRoutes2/></StrictMode>
-        
+        <StrictMode><AppRoutes2/></StrictMode>      
       </GlobalContext.Provider>
     </div>
   );
