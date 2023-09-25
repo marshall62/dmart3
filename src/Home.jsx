@@ -25,8 +25,8 @@ function Home () {
   // : "";
 
   return (
-    <div>
-      <img alt="home" className="{styles.homeImage}" src={url}/>
+    <div className={styles.homeImageContainer}>
+      <img alt="home" className={styles.homeImage} src={url}/>
       <p>
         {artwork.title}, {artwork.media}, {artwork.width} x {artwork.height}, {artwork.year}
       </p>
