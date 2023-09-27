@@ -6,12 +6,14 @@ import { GlobalContext } from "../App";
 import "react-image-gallery/styles/css/image-gallery.css";
 import './my-lightbox.css';
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useMediaQuery } from 'react-responsive';
 import { rawImageURL } from '../utils/urls';
 
 export default function MyLightbox ({artworks}) {
   const navigate = useNavigate();
   const [searchParams, ] = useSearchParams();
   const global = useContext(GlobalContext);
+  const isMobile = useMediaQuery({ maxWidth: 800 });
 
   // TODO:  Currently the state var artworkIndex is off because
   // I want to use it to initialize the ImageGallery to load up the
@@ -29,14 +31,19 @@ export default function MyLightbox ({artworks}) {
 
   const images = global.artistConfig ? 
     artworks.map(aw => {
-    return {
-      original: rawImageURL(global.artistConfig,aw,'midsize'),
-      fullscreen: rawImageURL(global.artistConfig,aw),
-      thumbnail: rawImageURL(global.artistConfig,aw,'thumb' ),
-      description: `${aw.title}, ${aw.width} X ${aw.height}, ${aw.year}, ${aw.media}`
-    }
+      let z =
+        {
+          original: rawImageURL(global.artistConfig,aw,'midsize'),
+          fullscreen: rawImageURL(global.artistConfig,aw),
+          thumbnail: rawImageURL(global.artistConfig,aw,'thumb' ),
+          description: `${aw.title}, ${aw.width} X ${aw.height}, ${aw.year}, ${aw.media}`
+        }
+      return z;
+
     }) :
     [];
+
+
 
 
   useEffect(() => {
@@ -54,9 +61,13 @@ export default function MyLightbox ({artworks}) {
     navigate('?artwork=' + artworks[index]._id.toString() + '&index=' + index)
   }
 
+
+
+  // const isPhoneInLandscapeMode = window.matchMedia("(orientation: landscape) and (max-width: 768px)").matches;
   return(
     <>
-      <ImageGallery className="image-gallery-description" onSlide={handleSlideChange} showIndex={true} items={images}></ImageGallery>
+      <ImageGallery className="image-gallery-description" showThumbnails={!isMobile} onSlide={handleSlideChange} showIndex={true} items={images}></ImageGallery>
+     
     </>
   )
 
