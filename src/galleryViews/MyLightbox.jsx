@@ -13,7 +13,7 @@ export default function MyLightbox ({artworks}) {
   const navigate = useNavigate();
   const [searchParams, ] = useSearchParams();
   const global = useContext(GlobalContext);
-  const isMobile = useMediaQuery({ maxWidth: 800 });
+  const isMobile = useMediaQuery({ maxHeight: 600 });
 
   // TODO:  Currently the state var artworkIndex is off because
   // I want to use it to initialize the ImageGallery to load up the
